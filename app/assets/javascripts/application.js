@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require bootswatch
 //= require_tree .
 
 function bootswatchHead(){

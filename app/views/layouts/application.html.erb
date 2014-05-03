@@ -23,9 +23,16 @@
       "application",
       "data-turbolinks-track" => true
     )%>
+    <script>
+      bootswatchHead();
+    </script>
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <header>
+      <%= render("layouts/navbar") %>
+    </header>
+
     <%= yield %>
   </body>
 </html>
