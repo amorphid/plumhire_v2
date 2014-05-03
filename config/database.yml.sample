@@ -2,6 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  username: plumhire
 
 development:
   <<: *default
@@ -14,5 +15,3 @@ test:
 production:
   <<: *default
   database: plumhire_production
-  username: plumhire
-  password: <%= ENV['PLUMHIRE_DATABASE_PASSWORD'] %>

@@ -9,7 +9,8 @@ gem "sass-rails", "4.0.3"
 gem "turbolinks", "2.2.2"
 gem "uglifier", "2.5.0"
 
-group :development do
+group :development, :test do
+  gem "rspec-rails", "2.14.2"
   gem "spring", "1.1.2"
 end
 
