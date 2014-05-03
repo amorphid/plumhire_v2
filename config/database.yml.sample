@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: plumhire_development
+
+test:
+  <<: *default
+  database: plumhire_test
+
+production:
+  <<: *default
+  database: plumhire_production
+  username: plumhire
+  password: <%= ENV['PLUMHIRE_DATABASE_PASSWORD'] %>
