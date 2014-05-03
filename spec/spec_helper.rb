@@ -19,6 +19,18 @@ Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
+
+  # runs tests in random order
   config.order = "random"
-  config.use_transactional_fixtures = true
+
+  # database_cleaner config (start)
+    config.use_transactional_fixtures = false
+    config.before(:suite) { DatabaseCleaner.clean_with(:truncation) }
+    config.before(:each)  { DatabaseCleaner.strategy = :transaction }
+    config.before(
+      :each,
+      :js => true)       { DatabaseCleaner.strategy = :truncation }
+    config.before(:each) { DatabaseCleaner.start                  }
+    config.after(:each)  { DatabaseCleaner.clean                  }
+  # database_cleaner config (end)
 end
