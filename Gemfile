@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "bootstrap-sass", "3.1.1.1"
 gem "coffee-rails", "4.0.1"
 gem "jbuilder", "2.0.7"
 gem "jquery-rails", "3.1.0"
