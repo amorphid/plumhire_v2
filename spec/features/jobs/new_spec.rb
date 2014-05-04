@@ -7,8 +7,7 @@ def test_sad_path
   visit root_path
   click_link("New job")
   click_button("Submit")
-  expect(page.body).to have_content("Title can't be blank")
-  expect(page.body).to have_content("Body can't be blank")
+  expect(page.body).to have_content("This value is required.")
 end
 
 feature "Creating a new job" do
