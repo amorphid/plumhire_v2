@@ -17,9 +17,11 @@ class JobsController < ApplicationController
       flash[:success] = "It worked :)"
       redirect_to @job
     else
-      render :new
+      render :edit
     end
   end
+
+  private
 
   def job_params
     params[:job].permit(:body, :title)
