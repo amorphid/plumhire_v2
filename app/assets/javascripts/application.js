@@ -18,4 +18,5 @@
 //= require bootswatch
 //= require parsley
 //= require custom
+//= require autosize
 //= require_tree .
