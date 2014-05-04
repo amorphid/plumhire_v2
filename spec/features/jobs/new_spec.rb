@@ -1,6 +1,17 @@
 require "spec_helper"
 
 def test_happy_path
+  visit root_path
+  fill_in(
+    "job_title",
+    with: Faker::Lorem.sentence
+  )
+  fill_in(
+    "job_body",
+    with: Faker::Lorem.paragraph
+  )
+  click_button("Submit")
+  expect(page.body).to have_content("It worked :)")
 end
 
 def test_sad_path

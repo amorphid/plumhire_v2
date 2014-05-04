@@ -31,8 +31,19 @@
   <body>
     <%= render("layouts/header") %>
     <div class="container">
-      <%= yield %>
-      <%= render("layouts/footer") %>
+      <div class="bs-docs-section">
+        <div class="row">
+          <div class="col-lg-10 col-lg-offset-1">
+            <% unless flash[:success].blank? %>
+              <div class="alert alert-success main-alert">
+                <%= flash[:success] %>
+              </div>
+            <% end %>
+            <%= yield %>
+            <%= render("layouts/footer") %>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
