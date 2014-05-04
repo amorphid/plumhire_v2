@@ -1,0 +1,42 @@
+<%= form_for(
+  @job,
+  method: :put,
+  role: "form",
+  url: job_path(@job)
+) do |f| %>
+  <div class="form-group">
+    <%= f.label(
+      :title,
+      "Title"
+    )%>
+    <%= f.text_field(
+      :title,
+      class: "form-control",
+      placeholder: "Enter title",
+      tyoe: "email"
+    )%>
+  </div>
+  <div class="form-group">
+    <%= f.label(
+      :body,
+      "Body"
+    )%>
+    <%= f.text_area(
+      :body,
+      class: "form-control",
+      placeholder: "Enter body",
+      rows: "15"
+    )%>
+  </div>
+  <%= f.submit(
+    "Submit",
+    class: "btn btn-primary",
+    type: "submit"
+  )%>
+  <%= link_to(
+    "Cancel",
+    jobs_path,
+    class: "btn btn-default"
+  )%>
+  </button>
+<% end %>
