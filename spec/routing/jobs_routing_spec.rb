@@ -9,4 +9,8 @@ describe JobsController do
   it "routes to #new" do
     get("/jobs/new").should route_to("jobs#new")
   end
+
+  it "routes to #update" do
+    put("/jobs/1").should route_to("jobs#update", id: "1")
+  end
 end

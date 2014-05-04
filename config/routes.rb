@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     :jobs,
     only: [
       :index,
-      :new
+      :new,
+      :update
     ]
   )
 end
