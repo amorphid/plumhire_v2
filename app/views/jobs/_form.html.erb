@@ -12,6 +12,9 @@
     <%= f.text_field(
       :title,
       class: "form-control",
+      data: {
+        "parsley-required" => "true"
+      },
       placeholder: "Enter title",
       tyoe: "email"
     )%>
@@ -24,6 +27,9 @@
     <%= f.text_area(
       :body,
       class: "form-control",
+      data: {
+        "parsley-required" => "true"
+      },
       placeholder: "Enter body",
       rows: "15"
     )%>

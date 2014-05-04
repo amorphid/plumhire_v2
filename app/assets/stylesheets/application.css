@@ -12,20 +12,8 @@
  *
  *= html5doctor.com_reset_stylesheet
  *= require bootswatch-bootstrap
- *= require bootswatch
+ *= require bootswatch-united
+ *= require custom
  *= require_tree .
  *= require_self
  */
-
-html {
-  overflow-y: scroll;
-}
-
-.bs-docs-section {
-  margin-top: 0;
-}
-
-.pager-header-item {
-  font-size: 0.5em;
-  margin-left: 30px;
-}
