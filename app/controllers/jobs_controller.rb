@@ -1,4 +1,8 @@
 class JobsController < ApplicationController
+  def edit
+    @job = Job.find(params[:id])
+  end
+
   def index
     @jobs = Job.all
   end
@@ -8,6 +12,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @job = Job.find(params[:id])
   end
 
   def update

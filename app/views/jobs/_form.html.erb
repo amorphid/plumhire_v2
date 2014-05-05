@@ -4,6 +4,7 @@
   role: "form",
   url: job_path(@job)
 ) do |f| %>
+  <%= render("errors") %>
   <div class="form-group">
     <%= f.label(
       :title,
@@ -12,9 +13,9 @@
     <%= f.text_field(
       :title,
       class: "form-control",
-      data: {
-        "parsley-required" => "true"
-      },
+      # data: {
+      #   "parsley-required" => "true"
+      # },
       placeholder: "Enter title",
       tyoe: "email"
     )%>
@@ -27,9 +28,9 @@
     <%= f.text_area(
       :body,
       class: "form-control",
-      data: {
-        "parsley-required" => "true"
-      },
+      # data: {
+      #   "parsley-required" => "true"
+      # },
       placeholder: "Enter body",
       rows: "15"
     )%>

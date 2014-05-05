@@ -31,6 +31,12 @@
           <td>
             <%= job.body %>
           </td>
+          <td>
+            <%= link_to(
+              "Show",
+              job_path(job)
+            )%>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -1,28 +1,26 @@
 require "spec_helper"
 
-feature "Creating a new job" do
+feature "Editting a job" do
+  given(:job)       { Fabricate(:job, title: "old title") }
+  given(:new_title) { Faker::Lorem.sentence               }
+
   given(:happy_path) do
     fill_in(
       "job_title",
-      with: Faker::Lorem.sentence
-    )
-    fill_in(
-      "job_body",
-      with: Faker::Lorem.paragraph
+      with: new_title
     )
     click_button("Submit")
-    expect(page.body).to have_content("It worked :)")
+    expect(page.body).to have_content(new_title)
   end
 
   given(:sad_path) do
     click_button("Submit")
-    expect(page.body).to have_content("Body can't be blank")
-    expect(page.body).to have_content("Title can't be blank")
+    expect(page.body).not_to have_content(new_title)
   end
 
-  before do
-    visit jobs_path
-    click_link("New job")
+  background do
+    visit job_path(job)
+    click_link("Edit job")
   end
 
   context "on happy path" do
@@ -40,6 +38,7 @@ feature "Creating a new job" do
   context "using sad path, then happy path" do
     scenario "displays error message(s)" do
       sad_path
+      click_link("Edit job")
       happy_path
     end
   end
