@@ -2,9 +2,10 @@ require "spec_helper"
 
 describe JobsController do
   context "GET /jobs/new" do
-    it "sets @job" do
+    it "redirects" do
       get(:new)
-      expect(assigns[:job]).to be_instance_of(Job)
+      job = assigns[:job]
+      expect(response).to redirect_to(edit_job_path(job))
     end
   end
 end

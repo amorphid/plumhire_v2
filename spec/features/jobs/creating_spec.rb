@@ -25,7 +25,7 @@ feature "Creating a new job" do
     click_link("New job")
   end
 
-  context "on happy path" do
+  context "using happy path" do
     scenario "displays success message" do
       happy_path
     end

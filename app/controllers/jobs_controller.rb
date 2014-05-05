@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
+  before_action :set_job, only: [:edit, :update]
+
   def edit
-    @job = Job.find(params[:id])
   end
 
   def index
@@ -9,6 +10,7 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new(id: SecureRandom.uuid)
+    redirect_to edit_job_path(@job)
   end
 
   def show
@@ -16,8 +18,6 @@ class JobsController < ApplicationController
   end
 
   def update
-    @job = Job.find_or_initialize_by(id: params[:id])
-
     if @job.update(job_params)
       flash[:success] = "It worked :)"
       redirect_to @job
@@ -30,5 +30,9 @@ class JobsController < ApplicationController
 
   def job_params
     params[:job].permit(:body, :title)
+  end
+
+  def set_job
+    @job = Job.find_or_initialize_by(id: params[:id])
   end
 end
