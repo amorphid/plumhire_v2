@@ -3,8 +3,8 @@ class CreateJob < ActiveRecord::Migration
     enable_extension "uuid-ossp"
 
     create_table :jobs, id: :uuid do |t|
-      t.string :body
-      t.text   :title
+      t.string :title
+      t.text   :body
 
       t.timestamps
     end

@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20140503221137) do
   enable_extension "uuid-ossp"
 
   create_table "jobs", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-    t.string   "body"
-    t.text     "title"
+    t.string   "title"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
