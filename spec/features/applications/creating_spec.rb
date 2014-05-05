@@ -22,13 +22,13 @@ feature "Creating an application" do
     click_button("Submit")
     expect(page.body).to have_content("Email can't be blank")
     expect(page.body).to have_content("Name can't be blank")
-    expect(page.body).to have_content("Url can't be blank")
+    expect(page.body).to have_content("Resume url can't be blank")
   end
 
   given(:job) { Fabricate(:job) }
 
   background do
-    visit job_path_job
+    visit job_path(job)
     click_link("Apply now")
   end
 
