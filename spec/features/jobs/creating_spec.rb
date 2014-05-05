@@ -22,7 +22,7 @@ feature "Creating a new job" do
 
   before do
     visit jobs_path
-    click_link("New job")
+    within("#tables") { click_link("New job") }
   end
 
   context "using happy path" do
