@@ -1,6 +1,8 @@
 TO DO
 =====
 
+* Add company or company titles to jobs
+
 * Error handling for invalid data, such as submitting a job title with more more than 255 characters.
 
 License
