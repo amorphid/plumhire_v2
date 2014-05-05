@@ -3,12 +3,6 @@ Rails.application.routes.draw do
 
   resources(
     :jobs,
-    only: [
-      :edit,
-      :index,
-      :new,
-      :show,
-      :update
-    ]
+    except: [ :create, :destroy ]
   )
 end
