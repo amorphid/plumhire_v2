@@ -1,7 +1,6 @@
 require "spec_helper"
 
 def test_happy_path
-  visit root_path
   fill_in(
     "job_title",
     with: Faker::Lorem.sentence
@@ -15,17 +14,19 @@ def test_happy_path
 end
 
 def test_sad_path
-  visit root_path
-  click_link("New job")
   click_button("Submit")
   expect(page.body).to have_content("This value is required.")
 end
 
 feature "Creating a new job" do
+  before do
+    visit jobs_path
+    click_link("New job")
+  end
+
   context "on happy path" do
     scenario "displays success message" do
-      pending
-      # test_happy_path
+      test_happy_path
     end
   end
 
@@ -37,9 +38,8 @@ feature "Creating a new job" do
 
   context "using sad path, then happy path" do
     scenario "displays error message(s)" do
-      pending
-      # test_sad_path
-      # test_happy_path
+      test_sad_path
+      test_happy_path
     end
   end
 end
