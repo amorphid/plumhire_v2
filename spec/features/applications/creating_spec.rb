@@ -15,7 +15,7 @@ feature "Creating an application" do
       with: Faker::Internet.email
     )
     click_button("Submit")
-    expect(page.body).to have_content("Your application has been saved :)")
+    expect(page.body).to have_content("Application has been saved :)")
   end
 
   given(:sad_path) do

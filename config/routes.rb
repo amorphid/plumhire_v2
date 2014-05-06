@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources(
     :applications,
-    only: [ :new, :update ]
+    only: [ :new, :show, :update ]
   )
 
   resources(

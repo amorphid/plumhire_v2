@@ -5,6 +5,10 @@ describe JobsController do
     get("/applications/new").should route_to("applications#new")
   end
 
+  it "routes to #show" do
+    get("/applications/1").should route_to("applications#show", id: "1")
+  end
+
   it "routes to #update" do
     put("/applications/1").should route_to("applications#update", id: "1")
   end
