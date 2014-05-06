@@ -1,4 +1,8 @@
 class Application < ActiveRecord::Base
+  # carrierwave uploader (start)
+    mount_uploader :resume_url, ResumeUploader
+  # carrierwave uploader (end)
+
   belongs_to :job
 
   validates(
@@ -14,7 +18,6 @@ class Application < ActiveRecord::Base
 
   validates(
     :resume_url,
-    presence: true,
-    uniqueness: true
+    presence: true
   )
 end

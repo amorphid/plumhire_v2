@@ -1,8 +1,9 @@
 <%= form_for(
   @application,
+  html:   { multipart: true },
   method: :put,
-  role: "form",
-  url: application_path(@application)
+  role:   "form",
+  url:    application_path(@application)
 ) do |f| %>
   <%= render(
     "shared/errors",
@@ -40,16 +41,15 @@
   </div>
     <div class="form-group">
     <%= f.label(
-      :email,
+      :resume_url,
       "Resume"
     )%>
-    <%= f.text_field(
+    <%= f.file_field(
       :resume_url,
       class: "form-control",
       data: {
         "parsley-required" => "true"
-      },
-      placeholder: "Enter email"
+      }
     )%>
   </div>
   <%= f.submit(

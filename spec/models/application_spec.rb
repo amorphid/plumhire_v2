@@ -15,7 +15,6 @@ describe Application do
   end
 
   context "#resume_url" do
-    it { should validate_presence_of(:resume_url)    }
-    it { should validate_uniqueness_of(:resume_url)  }
+    it { should validate_presence_of(:resume_url) }
   end
 end
