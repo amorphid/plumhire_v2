@@ -4,7 +4,10 @@
   role: "form",
   url: application_path(@application)
 ) do |f| %>
-  <%= render("errors") %>
+  <%= render(
+    "shared/errors",
+    object: @application
+  )%>
   <div class="form-group">
     <%= f.label(
       :name,
@@ -14,9 +17,9 @@
     <%= f.text_field(
       :name,
       class: "form-control",
-      # data: {
-      #   "parsley-required" => "true"
-      # },
+      data: {
+        "parsley-required" => "true"
+      },
       placeholder: "Enter name"
     )%>
   </div>
@@ -28,9 +31,10 @@
     <%= f.text_field(
       :email,
       class: "form-control",
-      # data: {
-      #   "parsley-required" => "true"
-      # },
+      data: {
+        "parsley-required" => "true",
+        "parsley-type"     => "email"
+      },
       placeholder: "Enter email"
     )%>
   </div>
@@ -42,9 +46,9 @@
     <%= f.text_field(
       :resume_url,
       class: "form-control",
-      # data: {
-      #   "parsley-required" => "true"
-      # },
+      data: {
+        "parsley-required" => "true"
+      },
       placeholder: "Enter email"
     )%>
   </div>

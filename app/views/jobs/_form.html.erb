@@ -4,7 +4,10 @@
   role: "form",
   url: job_path(@job)
 ) do |f| %>
-  <%= render("errors") %>
+  <%= render(
+    "shared/errors",
+    object: @job
+  )%>
   <div class="form-group">
     <%= f.label(
       :title,
@@ -14,7 +17,8 @@
       :title,
       class: "form-control",
       data: {
-        "parsley-required" => "true"
+        "parsley-required"  => "true",
+        "parsley-maxlength" => "255"
       },
       placeholder: "Enter title"
     )%>
@@ -31,7 +35,7 @@
         "parsley-required" => "true"
       },
       placeholder: "Enter body",
-      rows: "15"
+      rows: "10"
     )%>
   </div>
   <%= f.submit(
