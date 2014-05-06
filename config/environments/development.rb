@@ -9,16 +9,3 @@ Rails.application.configure do
   config.consider_all_requests_local = true
   config.eager_load = false
 end
-
-# carrierwave config for upload to s3 (start)
-  CarrierWave.configure do |config|
-    config.fog_credentials = {
-      :provider               => ENV["FOG_PROVIDER"],
-      :aws_access_key_id      => ENV["AWS_ACCESS_KEY_ID"],
-      :aws_secret_access_key  => ENV["AWS_SECRET_ACCESS_KEY"]
-    }
-
-    config.storage = :fog
-    config.fog_directory = ENV["AWS_S3_BUCKET"]
-  end
-# carrierwave config for upload to s3 (end)

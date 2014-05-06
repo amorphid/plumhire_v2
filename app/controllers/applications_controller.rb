@@ -29,4 +29,3 @@ class ApplicationsController < ApplicationController
     params[:application].permit(:email, :job_id, :name, :resume_url)
   end
 end
-

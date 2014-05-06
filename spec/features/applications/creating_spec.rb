@@ -10,9 +10,9 @@ feature "Creating an application" do
       "application_email",
       with: Faker::Internet.email
     )
-    fill_in(
-      "application_resume_url",
-      with: Faker::Internet.email
+    attach_file(
+      "Resume",
+      "./spec/support/files/hey_look_a_pdf_pdf_lolz.pdf"
     )
     click_button("Submit")
     expect(page.body).to have_content("Application has been saved :)")
@@ -32,7 +32,7 @@ feature "Creating an application" do
     click_link("Apply now")
   end
 
-    context "using happy path" do
+  context "using happy path" do
     scenario "displays success message" do
       happy_path
     end

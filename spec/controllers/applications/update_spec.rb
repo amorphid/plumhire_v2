@@ -5,7 +5,7 @@ describe ApplicationsController do
     let(:job) { Fabricate(:job) }
 
     let(:application) do
-      Fabricate.build(
+      Fabricate.attributes_for(
         :application,
         email:  "old@example.com",
         id:     SecureRandom.uuid,
@@ -16,8 +16,8 @@ describe ApplicationsController do
     it "sets @application" do
       put(
         :update,
-        application: application.attributes,
-        id:          application.id
+        application: application,
+        id:          application["id"]
       )
       expect(assigns[:application]).to be_instance_of(Application)
     end
@@ -25,36 +25,36 @@ describe ApplicationsController do
     it "creates an application" do
       expect { put(
         :update,
-        application: application.attributes,
-        id:          application.id
+        application: application,
+        id:          application["id"]
       )}.to change{Application.count}.from(0).to(1)
     end
 
     it "updates an application" do
-      application.save
+      Fabricate(:application, application)
       put(
         :update,
         application: { email: "new@example.com" },
-        id:          application.id
+        id:          application["id"]
       )
-      updated_email = Application.find(application.id).email
+      updated_email = Application.find(application["id"]).email
       expect(updated_email).to eq("new@example.com")
     end
 
     it "redirects w/ valid input" do
       put(
         :update,
-        application: application.attributes,
-        id:          application.id
+        application: application,
+        id:          application["id"]
       )
-      expect(response).to redirect_to(application_path(application))
+      expect(response).to redirect_to(application_path(application["id"]))
     end
 
     it "renders template w/ invalid input" do
       put(
         :update,
         application: {},
-        id:          application.id
+        id:          application["id"]
       )
       expect(response).to render_template(:edit)
     end
