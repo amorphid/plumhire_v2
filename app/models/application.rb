@@ -1,4 +1,6 @@
 class Application < ActiveRecord::Base
+  belongs_to :job
+
   validates(
     :email,
     presence: true,

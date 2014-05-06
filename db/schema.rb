@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140505221511) do
     t.string   "email"
     t.string   "name"
     t.string   "resume_url"
+    t.uuid     "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

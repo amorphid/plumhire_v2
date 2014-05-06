@@ -4,6 +4,7 @@ class CreateApplication < ActiveRecord::Migration
       t.string :email
       t.string :name
       t.string :resume_url
+      t.uuid   :job_id
 
       t.timestamps
     end

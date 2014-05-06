@@ -1,44 +1,21 @@
 require "spec_helper"
 
 describe Application do
-  subject do
-    Fabricate.build(
-      :application,
-      email:      "unique@example.com",
-      resume_url: "https://unique.example.com"
-    )
+  context "#email" do
+    it { should validate_presence_of(:email)    }
+    it { should validate_uniqueness_of(:email)  }
   end
 
-  before { expect(subject).to be_valid }
-
-  context "#email" do
-    it "validates presence" do
-      subject.email = ""
-      expect(subject).to have(1).errors_on(:email)
-    end
-
-    it "validates uniqueness" do
-      Fabricate(:application, email: "unique@example.com")
-      expect(subject).to have(1).errors_on(:email)
-    end
+  context "#job" do
+    it { should belong_to(:job) }
   end
 
   context "#name" do
-    it "validates presence" do
-      subject.name = ""
-      expect(subject).to have(1).errors_on(:name)
-    end
+    it { should validate_presence_of(:email) }
   end
 
   context "#resume_url" do
-    it "validates presence" do
-      subject.resume_url = ""
-      expect(subject).to have(1).errors_on(:resume_url)
-    end
-
-    it "validates uniqueness" do
-      Fabricate(:application, resume_url: "https://unique.example.com")
-      expect(subject).to have(1).errors_on(:resume_url)
-    end
+    it { should validate_presence_of(:resume_url)    }
+    it { should validate_uniqueness_of(:resume_url)  }
   end
 end

@@ -23,6 +23,7 @@ group :test do
   gem "database_cleaner", "1.2.0"
   gem "launchy", "2.4.2"
   gem "rspec-rails", "2.14.2"
+  gem "shoulda-matchers", "2.6.1"
 end
 
 group :doc do

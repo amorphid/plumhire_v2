@@ -1,27 +1,16 @@
 require "spec_helper"
 
 describe Job do
-  subject { Fabricate.build(:job) }
+  context "#applications" do
+    it { should have_many(:applications) }
+  end
 
   context "#body" do
-    it "validates presence" do
-      expect(subject).to have(0).errors_on(:body)
-      subject.body = ""
-      expect(subject).to have(1).errors_on(:body)
-    end
+    it { should validate_presence_of(:body)  }
   end
 
   context "#title" do
-    it "validates presence" do
-      expect(subject).to have(0).errors_on(:title)
-      subject.title = ""
-      expect(subject).to have(1).errors_on(:title)
-    end
-
-    it "validates length" do
-      expect(subject).to have(0).errors_on(:title)
-      subject.title = Faker::Lorem.characters(256)
-      expect(subject).to have(1).errors_on(:title)
-    end
+    it { should ensure_length_of(:title).is_at_most(255) }
+    it { should validate_presence_of(:title)             }
   end
 end

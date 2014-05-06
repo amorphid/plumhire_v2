@@ -1,4 +1,6 @@
 class Job < ActiveRecord::Base
+  has_many :applications
+
   validates(
     :body,
     presence: true
