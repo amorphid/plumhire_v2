@@ -3,7 +3,7 @@ require "spec_helper"
 describe JobsController do
   context "PUT /jobs/:id" do
     it "sets @job" do
-      job = Fabricate(:job)
+      job = Fabricate.build(:job, id: SecureRandom.uuid)
       put(
         :update,
         job: job.attributes,
