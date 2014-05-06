@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>
+    Application
+  </h1>
+</div>
+
+<div class="bs-component">
+  <div class="list-group">
+    <div class="list-group-item">
+      <h4 class="list-group-item-heading">
+        Name
+      </h4>
+      <p class="list-group-item-text">
+        <%= @application.name %>
+      </p>
+    </div>
+    <div class="list-group-item">
+      <h4 class="list-group-item-heading">
+        Email
+      </h4>
+      <p class="list-group-item-text">
+        <%= @application.email %>
+      </p>
+    </div>
+    <div class="list-group-item">
+      <h4 class="list-group-item-heading">
+        Resume URL
+      </h4>
+      <p class="list-group-item-text">
+        <%= link_to(
+          "Download",
+          @application.resume_url.url
+        )%>
+      </p>
+    </div>
+  </div>
+</div>
+
