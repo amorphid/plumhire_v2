@@ -3,15 +3,15 @@ require "spec_helper"
 feature "Creating an application" do
   given(:happy_path) do
     fill_in(
-      "applicant_name",
+      "application_name",
       with: Faker::Name.name
     )
     fill_in(
-      "applicant_email",
+      "application_email",
       with: Faker::Internet.email
     )
     fill_in(
-      "resume_url",
+      "application_resume_url",
       with: Faker::Internet.email
     )
     click_button("Submit")
