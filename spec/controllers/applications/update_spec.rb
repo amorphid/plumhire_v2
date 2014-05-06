@@ -1,18 +1,18 @@
 require "spec_helper"
 
 describe ApplicationsController do
-  let(:job) { Fabricate(:job) }
-
-  let(:application) do
-    Fabricate.build(
-      :application,
-      email:  "old@example.com",
-      id:     SecureRandom.uuid,
-      job_id: job.id
-    )
-  end
-
   context "PUT /applications/:id" do
+    let(:job) { Fabricate(:job) }
+
+    let(:application) do
+      Fabricate.build(
+        :application,
+        email:  "old@example.com",
+        id:     SecureRandom.uuid,
+        job_id: job.id
+      )
+    end
+
     it "sets @application" do
       put(
         :update,

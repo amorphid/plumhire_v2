@@ -2,8 +2,15 @@ require "spec_helper"
 
 describe JobsController do
   context "PUT /jobs/:id" do
+    let(:job) do
+      Fabricate.build(
+        :job,
+        id:    SecureRandom.uuid,
+        title: "old title"
+      )
+    end
+
     it "sets @job" do
-      job = Fabricate.build(:job, id: SecureRandom.uuid)
       put(
         :update,
         job: job.attributes,
@@ -13,7 +20,6 @@ describe JobsController do
     end
 
     it "creates a job" do
-      job = Fabricate.build(:job, id: SecureRandom.uuid)
       expect { put(
         :update,
         job: job.attributes,
@@ -22,20 +28,17 @@ describe JobsController do
     end
 
     it "updates a job" do
-      title1 = "before"
-      title2 = "after"
-      job = Fabricate(:job, title: title1)
-      job.title = title2
+      job.save
       put(
         :update,
-        job: job.attributes,
+        job: { title: "new title" },
         id:  job.id
       )
-      expect(Job.find(job).title).to eq(title2)
+      updated_title = Job.find(job).title
+      expect(updated_title).to eq("new title")
     end
 
     it "redirects w/ valid input" do
-      job = Fabricate.build(:job, id: SecureRandom.uuid)
       put(
         :update,
         job: job.attributes,
@@ -48,7 +51,7 @@ describe JobsController do
       put(
         :update,
         job: {},
-        id:  SecureRandom.uuid
+        id:  job.id
       )
       expect(response).to render_template(:edit)
     end
