@@ -6,6 +6,7 @@ describe ApplicationsController do
   let(:application) do
     Fabricate.build(
       :application,
+      email:  "old@example.com",
       id:     SecureRandom.uuid,
       job_id: job.id
     )
@@ -30,12 +31,14 @@ describe ApplicationsController do
     end
 
     it "updates an application" do
-      application.email = "old@example.com"
-      expect { put(
+      application.save
+      put(
         :update,
-        application: application.attributes,
+        application: { email: "new@example.com" },
         id:          application.id
-      )}.to change{Application.count}.from("old@example.com").to("new@example.com")
+      )
+      updated_email = Application.find(application.id).email
+      expect(updated_email).to eq("new@example.com")
     end
 
     it "redirects w/ valid input" do
