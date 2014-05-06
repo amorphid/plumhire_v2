@@ -5,7 +5,7 @@ describe JobsController do
     it "redirects" do
       get(:new)
       job = assigns[:job]
-      expect(response).to redirect_to(edit_job_path(job))
+      expect(response).to render_template(:edit)
     end
   end
 end

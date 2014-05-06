@@ -11,7 +11,7 @@ feature "Creating a new job" do
       with: Faker::Lorem.paragraph
     )
     click_button("Submit")
-    expect(page.body).to have_content("It worked :)")
+    expect(page.body).to have_content("Job has been saved :)")
   end
 
   given(:sad_path) do

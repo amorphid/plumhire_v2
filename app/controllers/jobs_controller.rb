@@ -10,7 +10,7 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new(id: SecureRandom.uuid)
-    redirect_to edit_job_path(@job)
+    render :edit
   end
 
   def show
@@ -19,7 +19,7 @@ class JobsController < ApplicationController
 
   def update
     if @job.update(job_params)
-      flash[:success] = "It worked :)"
+      flash[:success] = "Job has been saved :)"
       redirect_to @job
     else
       render :edit
