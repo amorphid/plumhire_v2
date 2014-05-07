@@ -1,10 +1,10 @@
 require "spec_helper"
 
 feature "Visiting a job" do
-  given(:job) { Fabricate(:job) }
+  given(:job) { Fabricate.build(:job) }
 
   background do
-    job
+    job.save
   end
 
   scenario "displays the job title" do
